@@ -81,10 +81,10 @@ static const char *vol_mute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "
 
 static const Key keys[] = {
 	/* modifier                     key                        function        argument */
-	{ MODKEY,                       XK_space,                  spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_b,                      spawn,          {.v = browsercmd } },
-	{ MODKEY,                       XK_Return,                 spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_w,                      togglebar,      {0} },
+	{ MODKEY,                       XK_d,                      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_w,                      spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,             XK_Return,                 spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_b,                      togglebar,      {0} },
 	{ MODKEY,                       XK_j,                      focusstackvis,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                      focusstackvis,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_j,                      focusstackhid,     {.i = +1 } },
@@ -109,14 +109,14 @@ static const Key keys[] = {
     // { MODKEY|Mod1Mask,              XK_o,                      incrohgaps,     {.i = -1 } },
     // { MODKEY|ShiftMask,             XK_y,                      incrovgaps,     {.i = +1 } },
     // { MODKEY|ShiftMask,             XK_o,                      incrovgaps,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Return,                 zoom,           {0} },
+	{ MODKEY,                       XK_Return,                 zoom,           {0} },
 	{ MODKEY,                       XK_Tab,                    view,           {0} },
 	{ MODKEY,                       XK_q,                      killclient,     {0} },
 	{ MODKEY,                       XK_t,                      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,                      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,                      setlayout,      {.v = &layouts[2]} },
-	// { MODKEY,                    XK_space,                  setlayout,      {0} },
-	// { MODKEY|ShiftMask,          XK_space,                  togglefloating, {0} },
+	{ MODKEY,                       XK_space,                  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,                  togglefloating, {0} },
 	{ MODKEY,                       XK_0,                      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,                      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,                  focusmon,       {.i = -1 } },
@@ -125,7 +125,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period,                 tagmon,         {.i = +1 } },
     { MODKEY,                       XK_s,                      show,           {0} },
     { MODKEY|ShiftMask,             XK_s,                      showall,        {0} },
-    { MODKEY,                       XK_s,                      hide,           {0} },
+    { MODKEY|ShiftMask,             XK_h,                      hide,           {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
