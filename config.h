@@ -84,7 +84,7 @@ static const char *vol_mute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "
 
 static const Key keys[] = {
 	/* modifier                     key                        function        argument */
-	{ MODKEY,                       XK_d,                      spawn,          {.v = dmenucmd }       },
+	{ MODKEY,                       XK_p,                      spawn,          {.v = dmenucmd }       },
 	{ MODKEY,                       XK_w,                      spawn,          {.v = browsercmd }     },
 	{ MODKEY|ShiftMask,             XK_Return,                 spawn,          {.v = termcmd }        },
 	{ MODKEY,                       XK_b,                      togglebar,      {0}                    },
