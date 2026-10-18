@@ -5,7 +5,9 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 Dependencies
 - In order to build dwm you need the Xlib header files.
 - maim
+- xcolor
 - dmenu
+- Xinerama
 
 
 ## Installation

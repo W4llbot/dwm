@@ -68,20 +68,22 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-// static const char *termcmd[]  = { "st", NULL };
-static const char *termcmd[]  = { "kitty", NULL };
-static const char *browsercmd[]  = { "firefox", NULL };
 
-static const char *ssfullcmd[] = { "/bin/sh", "-c", "maim ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H-%M-%S).png && notify-send \"Image saved to ~/Pictures/Screenshots/\"", NULL };
-static const char *ssselcmd[]  = { "/bin/sh", "-c", "maim -s | xclip -selection clipboard -t image/png && notify-send \"Image saved to clipboard\"", NULL };
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *termcmd[]        = { "kitty", NULL };
+static const char *browsercmd[]     = { "firefox", NULL };
+
+static const char *ssfullcmd[]      = { "sh", "-c", "maim ~/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d-%H-%M-%S).png && notify-send \"Image saved to ~/Pictures/Screenshots/\"", NULL };
+static const char *ssselcmd[]       = { "sh", "-c", "maim -s | xclip -selection clipboard -t image/png && notify-send \"Image saved to clipboard\"", NULL };
+static const char *colorcmd[]       = { "xcolor", "-s", NULL };
+static const char *colorcmdrgb[]    = { "xcolor", "-s", "-f", "rgb", NULL };
 
 /* for function keys */
-static const char *brightness_up[]   = { "brightnessctl", "set", "10%+", NULL };
-static const char *brightness_down[] = { "brightnessctl", "set", "10%-", NULL };
-static const char *vol_up[]   = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
-static const char *vol_down[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-", NULL };
-static const char *vol_mute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
+static const char *brightnessup[]   = { "brightnessctl", "set", "10%+", NULL };
+static const char *brightnessdown[] = { "brightnessctl", "set", "10%-", NULL };
+static const char *volumeup[]       = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
+static const char *volumedown[]     = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-", NULL };
+static const char *togglemute[]     = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key                        function        argument */
@@ -140,13 +142,15 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-    { 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = brightness_up}   },
-    { 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = brightness_down} },
-    { 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = vol_up}          },
-    { 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = vol_down}        },
-    { 0,                            XF86XK_AudioMute,          spawn,          {.v = vol_mute}        },
-	{ 0,                            XK_Print,                  spawn,          {.v = ssfullcmd}        },
-	{ ShiftMask,                    XK_Print,                  spawn,          {.v = ssselcmd}        },
+    { 0,                            XF86XK_MonBrightnessUp,    spawn,          {.v = brightnessup}   },
+    { 0,                            XF86XK_MonBrightnessDown,  spawn,          {.v = brightnessdown} },
+    { 0,                            XF86XK_AudioRaiseVolume,   spawn,          {.v = volumeup}       },
+    { 0,                            XF86XK_AudioLowerVolume,   spawn,          {.v = volumedown}     },
+    { 0,                            XF86XK_AudioMute,          spawn,          {.v = togglemute}     },
+	{ 0,                            XK_Print,                  spawn,          {.v = ssfullcmd}      },
+	{ ShiftMask,                    XK_Print,                  spawn,          {.v = ssselcmd}       },
+    { MODKEY,                       XK_c,                      spawn,          {.v = colorcmd}       },
+    { MODKEY|ShiftMask,             XK_c,                      spawn,          {.v = colorcmdrgb}    },
 	{ MODKEY|ShiftMask,             XK_q,                      quit,           {0} },
 };
 
