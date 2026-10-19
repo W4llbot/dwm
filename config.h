@@ -79,8 +79,8 @@ static const char *colorcmd[]       = { "xcolor", "-s", NULL };
 static const char *colorcmdrgb[]    = { "xcolor", "-s", "-f", "rgb", NULL };
 
 /* for function keys */
-static const char *brightnessup[]   = { "brightnessctl", "set", "10%+", NULL };
-static const char *brightnessdown[] = { "brightnessctl", "set", "10%-", NULL };
+static const char *brightnessup[]   = { "brightnessctl", "set", "5%+", NULL };
+static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *volumeup[]       = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%+", NULL };
 static const char *volumedown[]     = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "5%-", NULL };
 static const char *togglemute[]     = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
